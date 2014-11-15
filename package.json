@@ -1,0 +1,32 @@
+{
+  "name": "browser-sync-spa",
+  "version": "1.0.0",
+  "description": "Single Page App support for BrowserSync",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shakyShane/browser-sync-spa"
+  },
+  "keywords": [
+    "browser-sync",
+    "spa"
+  ],
+  "author": "shakyshane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shakyShane/browser-sync-spa/issues"
+  },
+  "homepage": "https://github.com/shakyShane/browser-sync-spa",
+  "devDependencies": {
+    "browser-sync": "^1.6.5",
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1",
+    "supertest": "^0.15.0"
+  },
+  "dependencies": {
+    "connect-history-api-fallback": "0.0.5"
+  }
+}

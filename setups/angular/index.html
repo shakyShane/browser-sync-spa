@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="BrowserSync">
+
+    <div ng-controller="MainController">
+
+        <a href="/page1">Page 1</a>
+        <a href="/page2">Page 2</a>
+
+        <div ng-view id="content"></div>
+
+    </div>
+    <script src="angular.min.js"></script>
+    <script src="angular-route.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
