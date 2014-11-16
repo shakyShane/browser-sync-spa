@@ -4,7 +4,7 @@
   "description": "Single Page App support for BrowserSync",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive test/integration"
   },
   "repository": {
     "type": "git",
@@ -21,12 +21,13 @@
   },
   "homepage": "https://github.com/shakyShane/browser-sync-spa",
   "devDependencies": {
-    "browser-sync": "^1.6.5",
+    "browser-sync": "^1.7.0",
     "chai": "^1.10.0",
     "mocha": "^2.0.1",
     "supertest": "^0.15.0"
   },
   "dependencies": {
-    "connect-history-api-fallback": "0.0.5"
+    "connect-history-api-fallback": "0.0.5",
+    "opt-merger": "^1.1.0"
   }
 }

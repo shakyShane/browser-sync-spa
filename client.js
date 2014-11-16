@@ -1,5 +1,7 @@
 (function (bs) {
 
+    var EVENT_NAME = "history:change";
+
     var sockets = bs.socket;
 
     (function(history){
@@ -14,10 +16,10 @@
     })(window.history);
 
     window.onpopstate = history.onpushstate = function (out, args) {
-        sockets.emit("history:change", {path: args[2]});
+        sockets.emit(EVENT_NAME, {path: args[2]});
     }
 
-    sockets.on("history:change", function (data) {
+    sockets.on(EVENT_NAME, function (data) {
 
         var pathname = getLocation(data.path).pathname;
 
@@ -42,13 +44,23 @@
     }
 
     function syncAngularLocation (pathname) {
-        var $injector  = angular.element(document.body).injector();
-        var $location  = $injector.get('$location');
-        var $rootScope = $injector.get('$rootScope');
+        var elem;
+        if (document.querySelector) {
 
-        if (pathname !== $location.path()) {
-            $location.path(pathname);
-            $rootScope.$digest();
+            elem = document.querySelector('%SELECTOR%');
+
+            if (!elem) {
+                return;
+            }
+
+            var $injector  = angular.element(elem).injector();
+            var $location  = $injector.get('$location');
+            var $rootScope = $injector.get('$rootScope');
+
+            if (pathname !== $location.path()) {
+                $location.path(pathname);
+                $rootScope.$digest();
+            }
         }
     }
 

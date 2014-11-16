@@ -6,7 +6,7 @@ describe("registering plugin with bs", function () {
 
     var instance;
     before(function (done) {
-        browserSync.use(require("../index"));
+        browserSync.use(require("../../index")());
         instance = browserSync({
             server: "setups/angular",
             online: false,
@@ -19,7 +19,7 @@ describe("registering plugin with bs", function () {
         instance.cleanup();
     });
     it("should integrate", function () {
-        assert.ok(instance.pluginManager.plugins["BrowserSync SPA"]);
+        assert.equal(instance.getUserPlugins()[0].name, "BrowserSync SPA");
     });
     it("should serve index.html when route not matched", function (done) {
         request(instance.server)
