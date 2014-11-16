@@ -1,6 +1,6 @@
 {
   "name": "browser-sync-spa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Single Page App support for BrowserSync",
   "main": "index.js",
   "scripts": {
