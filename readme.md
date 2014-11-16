@@ -19,10 +19,8 @@ browserSync.use(spa({
 
 browserSync({
     open: false,
-    server: {
-        baseDir: "setups/angular"
-    },
-    files:   "setups/angular/*"
+    server: "setups/angular",
+    files:  "setups/angular/*"
 });
 ```
 
