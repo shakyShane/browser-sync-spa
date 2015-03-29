@@ -16,7 +16,9 @@
     })(window.history);
 
     window.onpopstate = history.onpushstate = function (out, args) {
-        sockets.emit(EVENT_NAME, {path: args[2]});
+        if(args){
+            sockets.emit(EVENT_NAME, {path: args[2]});
+        }
     }
 
     sockets.on(EVENT_NAME, function (data) {
