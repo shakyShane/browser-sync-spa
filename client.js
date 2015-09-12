@@ -41,7 +41,7 @@
      */
     function syncBackboneLocation (pathname) {
         if (window.Backbone && Backbone.history) {
-            Backbone.history.navigate(pathname);
+            Backbone.history.navigate(pathname, { trigger: true });
         }
     }
 
