@@ -14,7 +14,16 @@ var browserSync = require("browser-sync");
 var spa         = require("browser-sync-spa");
 
 browserSync.use(spa({
-    selector: "[ng-app]" // Only needed for angular apps
+
+    // Only needed for angular apps
+    selector: "[ng-app]",
+
+    // Options to pass to connect-history-api-fallback.
+    // If your application already provides fallback urls (such as an existing proxy server),
+    // this value can be set to false to omit using the connect-history-api-fallback middleware entirely.
+    history: {
+        index: '/index.html'
+    }
 }));
 
 browserSync({

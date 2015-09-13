@@ -18,15 +18,13 @@ var plugin = {
         "client:js": "",
         "client:events": function () {
             return HISTORY_CHANGE_EVENT;
-        },
-        "server:middleware": function () {
-            return historyApiFallback
         }
     }
 }
 
 const defaults = {
-    selector: "[ng-app]"
+    selector: "[ng-app]",
+    history: {}
 };
 
 /**
@@ -37,5 +35,13 @@ module.exports = function (opts) {
     var config   = merger.set({simple: true}).merge(defaults, opts);
     var clientJs = require("fs").readFileSync(__dirname + CLIENT_JS, "utf-8");
     plugin.hooks["client:js"] = clientJs.replace("%SELECTOR%", config.selector);
+
+    if (config.history) {
+        plugin.hooks["server:middleware"] = function () {
+            return historyApiFallback(config.history);
+        };
+    }
+
+
     return plugin;
 }
