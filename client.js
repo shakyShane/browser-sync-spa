@@ -4,6 +4,8 @@
 
     var sockets = bs.socket;
 
+    var base = document.querySelector('base') && document.querySelector('base').getAttribute('href');
+
     (function(history){
         var pushState = history.pushState;
         history.pushState = function(state) {
@@ -53,6 +55,11 @@
 
             if (!elem) {
                 return;
+            }
+
+            // remove base href from pathname to compare it with $location.path
+            if (base) {
+                pathname = pathname.replace(base, '/');
             }
 
             var $injector  = angular.element(elem).injector();
