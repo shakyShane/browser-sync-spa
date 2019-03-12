@@ -1,5 +1,4 @@
 var historyApiFallback = require("connect-history-api-fallback");
-var merger = require("opt-merger");
 
 const PLUGIN_NAME          = "BrowserSync SPA";
 const HISTORY_CHANGE_EVENT = "history:change";
@@ -32,7 +31,7 @@ const defaults = {
  * @param opts
  */
 module.exports = function (opts) {
-    var config   = merger.set({simple: true}).merge(defaults, opts);
+    var config   = Object.assign({}, defaults, opts);
     var clientJs = require("fs").readFileSync(__dirname + CLIENT_JS, "utf-8");
     plugin.hooks["client:js"] = clientJs.replace("%SELECTOR%", config.selector);
 
